@@ -7,6 +7,7 @@ import (
 )
 
 type logInfoRequest struct {
+	Level   string `json:"level"`
 	Message string `json:"message"`
 }
 

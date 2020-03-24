@@ -10,10 +10,12 @@ import (
 func makeLogInfoEndpoint(svc Logopher) endpoint.Endpoint {
 	return func(_ context.Context, request interface{}) (interface{}, error) {
 		req := request.(logInfoRequest)
-		errorMessage, err := svc.LogEvent(req.Message)
+		errorMessage, err := svc.LogEvent(req.Level, req.Message)
 		if err != nil {
 			return logInfoResponse{errorMessage, err.Error()}, nil
 		}
 		return logInfoResponse{errorMessage, ""}, nil
 	}
 }
+
+//RequestLogs(string)
